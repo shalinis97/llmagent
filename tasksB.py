@@ -3,8 +3,7 @@
 # B1 & B2: Security Checks
 import os
 import subprocess
-import whisper
-import markdown
+
 
 def B12(filepath):
     if filepath.startswith('/data'):
