@@ -216,7 +216,7 @@ function_definitions_llm = [
     },
     {
         "name": "A8",
-        "description": "Generate an image representation of credit card details from a text file.",
+        "description": "Extract the credit card number from a PNG image and write it to a text file.",
         "parameters": {
             "type": "object",
             "properties": {
