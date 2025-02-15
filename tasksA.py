@@ -10,6 +10,7 @@ from scipy.spatial.distance import cosine
 from dotenv import load_dotenv
 from fastapi import HTTPException
 
+
 load_dotenv()
 
 AIPROXY_TOKEN = os.getenv('AIPROXY_TOKEN')
@@ -125,7 +126,7 @@ def png_to_base64(image_path):
     return base64_string
 
 
-def A8(filename='/data/credit_card.txt', image_path='/data/credit_card.png'):
+def A8(filename='/data/credit-card.txt', image_path='/data/credit_card.png'):
     # Construct the request body for the AIProxy call
     body = {
         "model": "gpt-4o-mini",
