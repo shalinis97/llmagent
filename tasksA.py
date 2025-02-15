@@ -30,12 +30,33 @@ def A1(email="24f2006531@ds.study.iitm.ac.in "):
         raise HTTPException(status_code=500, detail=f"Error: {e.stderr}")
 # A1()
 def A2(prettier_version="prettier@3.4.2", filename="/data/format.md"):
+    """
+    Installs or updates Prettier locally (if needed) and then runs it against
+    the given file.
+    """
+    import subprocess
+
+    # Command to run Prettier
     command = [r"C:\Program Files\nodejs\npx.cmd", prettier_version, "--write", filename]
+
+    # 1. Check if the specified Prettier version is installed
+    try:
+        subprocess.check_call(['npm', 'list', prettier_version], shell=True)
+    except subprocess.CalledProcessError:
+        # 2. If not installed, try installing
+        try:
+            subprocess.check_call(['npm', 'install', prettier_version], shell=True)
+        except subprocess.CalledProcessError as e:
+            raise Exception(f"Failed to install Prettier: {e}")
+
+    # 3. Now run Prettier on the file
     try:
         subprocess.run(command, check=True)
         print("Prettier executed successfully.")
     except subprocess.CalledProcessError as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while running Prettier: {e}")
+
+
 
 def A3(filename='/data/dates.txt', targetfile='/data/dates-wednesdays.txt', weekday=2):
     input_file = filename
