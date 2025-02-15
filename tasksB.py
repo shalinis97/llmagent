@@ -3,6 +3,8 @@
 # B1 & B2: Security Checks
 import os
 import subprocess
+import whisper
+import markdown
 
 def B12(filepath):
     if filepath.startswith('/data'):
@@ -98,8 +100,6 @@ def B7(image_path, output_path, resize=None):
         img = img.resize(resize)
     img.save(output_path)
 
-import whisper
-import os
 
 def B8(audio_path):
     """
@@ -121,13 +121,14 @@ def B8(audio_path):
         result = model.transcribe(audio_path)
 
         return result["text"]  # Extract only the transcribed text
+    
     except Exception as e:
         print(f"Error in transcription: {e}")
-        return None
+        return None
 
 # B9: Markdown to HTML Conversion
 import markdown
-import os
+
 
 def B9(markdown_file, output_file=None):
     """
@@ -162,7 +163,7 @@ def B9(markdown_file, output_file=None):
         return html_content
     except Exception as e:
         print(f"Error in Markdown to HTML conversion: {e}")
-        return None
+        return None
 
 # B10: API Endpoint for CSV Filtering
 import pandas as pd
@@ -201,4 +202,4 @@ def B10(csv_file, filter_column, filter_value):
         return json_output
     except Exception as e:
         print(f"Error in filtering CSV: {e}")
-        return None
+        return None

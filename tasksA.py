@@ -8,6 +8,8 @@ import os
 import requests
 from scipy.spatial.distance import cosine
 from dotenv import load_dotenv
+import pillow
+import PIL
 
 load_dotenv()
 
