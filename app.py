@@ -227,7 +227,7 @@ function_definitions_llm = [
                 "image_path": {
                     "type": "string",
                     "pattern": r".*/(.*\.png)",
-                    "default": "/data/credit-card.png"
+                    "default": "/data/credit_card.png"
                 }
             },
             "required": ["filename", "image_path"]
