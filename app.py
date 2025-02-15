@@ -12,8 +12,7 @@
 #   "python-dotenv",
 #   "httpx",
 #   "markdown",
-#   "duckdb",
-#   "PIL"
+#   "duckdb"
 # ]
 # ///
 

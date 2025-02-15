@@ -7,6 +7,7 @@
 # dependencies = [
 #     "faker",
 #     "pillow",
+#     "PIL"
 # ]
 # ///
 
