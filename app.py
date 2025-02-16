@@ -13,7 +13,6 @@
 #   "httpx",
 #   "markdown",
 #   "duckdb",
-#   "PIL",
 #   "whisper",
 #   "markdown",
 #   "pillow" ]
