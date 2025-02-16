@@ -15,7 +15,8 @@
 #   "duckdb",
 #   "PIL",
 #   "whisper",
-#   "markdown" ]
+#   "markdown",
+#   "pillow" ]
 # ///
 
 from fastapi import FastAPI, HTTPException, Query
