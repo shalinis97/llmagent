@@ -13,8 +13,9 @@
 #   "httpx",
 #   "markdown",
 #   "duckdb",
-#   "whisper"
-# ]
+#   "PIL",
+#   "whisper",
+#   "markdown" ]
 # ///
 
 from fastapi import FastAPI, HTTPException, Query
@@ -216,7 +217,7 @@ function_definitions_llm = [
     },
     {
         "name": "A8",
-        "description": "Extract the credit card number from a PNG image and write it to a text file.",
+        "description": "Generate an image representation of credit card details from a text file.",
         "parameters": {
             "type": "object",
             "properties": {
@@ -228,7 +229,7 @@ function_definitions_llm = [
                 "image_path": {
                     "type": "string",
                     "pattern": r".*/(.*\.png)",
-                    "default": "/data/credit_card.png"
+                    "default": "/data/credit-card.png"
                 }
             },
             "required": ["filename", "image_path"]

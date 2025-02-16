@@ -10,13 +10,12 @@ from scipy.spatial.distance import cosine
 from dotenv import load_dotenv
 from fastapi import HTTPException
 
-
 load_dotenv()
 
 AIPROXY_TOKEN = os.getenv('AIPROXY_TOKEN')
 
 
-def A1(email="24f2006531@ds.study.iitm.ac.in "):
+def A1(email="24f2006531@ds.study.iitm.ac.in"):
     try:
         process = subprocess.Popen(
             ["uv", "run", "https://raw.githubusercontent.com/sanand0/tools-in-data-science-public/tds-2025-01/project-1/datagen.py", email],
@@ -28,36 +27,23 @@ def A1(email="24f2006531@ds.study.iitm.ac.in "):
         return stdout
     except subprocess.CalledProcessError as e:
         raise HTTPException(status_code=500, detail=f"Error: {e.stderr}")
-# A1()
+
 def A2(prettier_version="prettier@3.4.2", filename="/data/format.md"):
-    """
-    Installs or updates Prettier locally (if needed) and then runs it against
-    the given file.
-    """
-    import subprocess
-
-    # Command to run Prettier
-    command = [r"C:\Program Files\nodejs\npx.cmd", prettier_version, "--write", filename]
-
-    # 1. Check if the specified Prettier version is installed
     try:
-        subprocess.check_call(['npm', 'list', prettier_version], shell=True)
-    except subprocess.CalledProcessError:
-        # 2. If not installed, try installing
-        try:
-            subprocess.check_call(['npm', 'install', prettier_version], shell=True)
-        except subprocess.CalledProcessError as e:
-            raise Exception(f"Failed to install Prettier: {e}")
-
-    # 3. Now run Prettier on the file
+        # Run npx without absolute path
+        subprocess.run(["npx", prettier_version, "--write", filename], check=True)
+        print("Prettier executed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred: {e}")
+'''
+def A2(prettier_version="prettier@3.4.2", filename="/data/format.md"):
+    command = [r"C:\Program Files\nodejs\npx.cmd", prettier_version, "--write", filename]
     try:
         subprocess.run(command, check=True)
         print("Prettier executed successfully.")
     except subprocess.CalledProcessError as e:
-        print(f"An error occurred while running Prettier: {e}")
-
-
-
+        print(f"An error occurred: {e}")
+'''
 def A3(filename='/data/dates.txt', targetfile='/data/dates-wednesdays.txt', weekday=2):
     input_file = filename
     output_file = targetfile
@@ -147,7 +133,7 @@ def png_to_base64(image_path):
     return base64_string
 
 
-def A8(filename='/data/credit-card.txt', image_path='/data/credit_card.png'):
+def A8(filename='/data/credit_card.txt', image_path='/data/credit_card.png'):
     # Construct the request body for the AIProxy call
     body = {
         "model": "gpt-4o-mini",
